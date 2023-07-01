@@ -6,6 +6,16 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    colors: {
+      'company-black': '#222427',
+      'white': '#FFFFFF'
+    },
+    container: {
+      center: true,
+      screens: {
+        xl: '1095px'
+      },
+    },
   },
   plugins: [],
 }

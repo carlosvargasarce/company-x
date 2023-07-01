@@ -1,11 +1,12 @@
-import * as React from "react"
+import * as React from "react";
+import Layout from "../components/layout";
 
 const ContactPage = () => {
   return (
-    <main>
+    <Layout>
       <h1>Contact Page</h1>
-    </main>
-  )
+    </Layout>
+  );
 }
 
 export default ContactPage
