@@ -1,5 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* Custom Styles */
+.mainTitle {
+    @apply text-2xl font-medium py-4 text-center;
+}
+
+.inputCustom {
+    @apply border border-grey-400 placeholder-grey-400 rounded w-full py-3 px-6;
+}

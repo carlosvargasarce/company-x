@@ -10,7 +10,10 @@ module.exports = {
     extend: {},
     colors: {
       'company-black': '#222427',
-      'white': '#FFFFFF'
+      'black': '#000000',
+      'white': '#FFFFFF',
+      'grey-400': '#d1d5db',
+      'blue': '#0B92F1'
     },
     container: {
       center: true,
