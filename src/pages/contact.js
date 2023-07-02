@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Layout from "../components/layout";
 import { FaChevronDown } from "react-icons/fa";
 
@@ -21,6 +21,8 @@ const ContactPage = () => {
       'value': 'demo'
     }
   ];
+
+  const emailInput = useRef(null);
 
   const [email, setEmail] = useState('');
   const [isEmailValid, setIsEmailValid] = useState(true);
@@ -65,7 +67,7 @@ const ContactPage = () => {
   };
 
   return (
-    <Layout>
+    <Layout emailRef={emailInput}>
       <div className="container">
         <h1 className="mainTitle">Company Name</h1>
         <div className="pt-12 pb-12 sm:pb-4">
@@ -86,6 +88,7 @@ const ContactPage = () => {
                       value={email}
                       onChange={handleEmailChange}
                       placeholder="Email"
+                      ref={emailInput}
                     />
                     {!isEmailValid ?
                       <span className='text-red text-xs mt-2 block'>Error: You can not use emails from gmail</span>

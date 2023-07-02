@@ -1,13 +1,15 @@
-import React from "react";
+import React, { createContext, useState } from 'react';
 import Header from "../components/header";
 import Footer from "../components/footer";
 
-export default function Layout({ children }) {
+export const LayoutContext = createContext();
+
+export default function Layout( { children, emailRef }) {
   return (
-    <>
-          <Header />
-          <main>{children}</main>
-          <Footer />
-    </>
+    <LayoutContext.Provider value={{ emailRef }}>
+      <Header />
+      <main>{children}</main>
+      <Footer />
+    </LayoutContext.Provider>
   )
 }
