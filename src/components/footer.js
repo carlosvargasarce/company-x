@@ -1,5 +1,6 @@
 import React from "react";
 import { FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
+import ScrollTop from "../components/scroll-top";
 
 export default function Footer() {
   return (
@@ -11,38 +12,40 @@ export default function Footer() {
                 </p>
                 <p><FaMapMarkerAlt className="inline-block mb-1 mr-1"/>123 Main st, San Francisco, CA, 94107</p>
             </div>
-            <div class="grid grid-cols-2 gap-8 flex-1 ">
+            <div className="grid grid-cols-2 gap-8 flex-1 relative">
               <div>
-                  <h2 class="mb-4 font-semibold">Free Trial</h2>
+                  <h2 className="mb-4 font-semibold">Free Trial</h2>
                   <ul className="text-sm">
-                      <li class="mb-5">
-                          <a href="#" class="hover:underline">Azure</a>
+                      <li className="mb-5">
+                          <a href="#" className="hover:underline">Azure</a>
                       </li>
-                      <li class="mb-5">
-                          <a href="#" class="hover:underline">AWS</a>
+                      <li className="mb-5">
+                          <a href="#" className="hover:underline">AWS</a>
                       </li>
                       <li>
-                          <a href="#" class="hover:underline">Google</a>
+                          <a href="#" className="hover:underline">Google</a>
                       </li>
                   </ul>
               </div>
               <div>
-                  <h2 class="mb-4 font-semibold">Resources</h2>
+                  <h2 className="mb-4 font-semibold">Resources</h2>
                   <ul className="text-sm">
-                      <li class="mb-5">
-                          <a href="#" class="hover:underline ">Terms Of Service</a>
+                      <li className="mb-5">
+                          <a href="#" className="hover:underline ">Terms Of Service</a>
                       </li>
-                      <li class="mb-5">
-                          <a href="#" class="hover:underline">Privacy Policy</a>
+                      <li className="mb-5">
+                          <a href="#" className="hover:underline">Privacy Policy</a>
                       </li>
                       <li>
-                          <a href="#" class="hover:underline">Support</a>
+                          <a href="#" className="hover:underline">Support</a>
                       </li>
                   </ul>
               </div>
-          </div>
+              <ScrollTop />
+            </div>
+
         </div>
-        <hr class="h-p border-white"></hr>
+        <hr className="h-p border-white"></hr>
         <div className="container flex items-center justify-center py-6">
             <p className="text-white text-sm">© 2022 Example</p>
         </div>

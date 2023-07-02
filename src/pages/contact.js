@@ -1,7 +1,6 @@
-import * as React from "react";
+import React, { useState } from 'react';
 import Layout from "../components/layout";
 import { FaChevronDown } from "react-icons/fa";
-
 
 const ContactPage = () => {
   const options = [
@@ -23,6 +22,48 @@ const ContactPage = () => {
     }
   ];
 
+  const [email, setEmail] = useState('');
+  const [isEmailValid, setIsEmailValid] = useState(true);
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [isPhoneValid, setIsPhoneValid] = useState(true);
+  const [reason, setReason] = useState('sales');
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (email && name && phone && reason && isEmailValid && isPhoneValid) {
+      setIsFormValid(true);
+    }
+  }
+
+  const handleEmailChange = (e) => {
+    const value = e.target.value;
+    setEmail(value);
+
+    const emailRegex = /^(?!.*gmail\.com).*$/;
+    setIsEmailValid(emailRegex.test(value));
+  };
+
+  const handleNameChange = (e) => {
+    const value = e.target.value;
+    setName(value);
+  };
+
+  const handlePhoneChange = (e) => {
+    const value = e.target.value;
+    setPhone(value);
+
+    const phoneRegex = /^\d{10,}$/;
+    setIsPhoneValid(phoneRegex.test(value));
+  };
+
+  const handleReasonChange = (e) => {
+    const value = e.target.value;
+    setReason(value);
+  };
+
   return (
     <Layout>
       <div className="container">
@@ -34,57 +75,81 @@ const ContactPage = () => {
           </div>
           <div className="sm:flex sm:space-x-8">
             <div className="flex-1 basis-3/5 max-sm:mb-16">
-              <form className="overflow-hidden">
-                <div className="mb-6">
-                  <input 
-                    className="inputCustom"
-                    id="email"
-                    type="text"
-                    placeholder="Email"
-                  />
-                </div>
-                <div className="mb-6">
-                  <input 
-                    className="inputCustom"
-                    id="name"
-                    type="text"
-                    placeholder="Name"
-                  />
-                </div>
-                <div className="mb-6">
-                  <input 
-                    className="inputCustom"
-                    id="phoneNumber"
-                    type="text"
-                    placeholder="Phone Number"
-                  />
-                </div>
-                <div className="mb-6 relative">
-                  <select 
-                    className="inputCustom appearance-none"
-                    id="reason"
+              {!isFormValid ?
+                <form className="overflow-hidden" onSubmit={handleSubmit}>
+                  <div className="mb-6 relative">
+                    <input 
+                      className="inputCustom"
+                      id="email"
+                      required
+                      type="email"
+                      value={email}
+                      onChange={handleEmailChange}
+                      placeholder="Email"
+                    />
+                    {!isEmailValid ?
+                      <span className='text-red text-xs mt-2 block'>Error: You can not use emails from gmail</span>
+                    : null}
+                  </div>
+                  <div className="mb-6">
+                    <input 
+                      className="inputCustom"
+                      required
+                      id="name"
+                      type="text"
+                      value={name}
+                      onChange={handleNameChange}
+                      placeholder="Name"
+                    />
+                  </div>
+                  <div className="mb-6">
+                    <input 
+                      className="inputCustom"
+                      required
+                      id="phoneNumber"
+                      value={phone}
+                      onChange={handlePhoneChange}
+                      type="text"
+                      placeholder="Phone Number"
+                      minLength={10}
+                    />
+                    {!isPhoneValid ?
+                      <span className='text-red text-xs mt-2 block'>Error: Phone numbers should be at least 10 digit long</span>
+                    : null}
+                  </div>
+                  <div className="mb-6 relative">
+                    <select 
+                      className="inputCustom appearance-none"
+                      id="reason"
+                      value={reason}
+                      onChange={handleReasonChange}
+                    >
+                      {options.map((option, i) => (
+                        <option value={option.value} key={i}>
+                          {option.name}
+                        </option>
+                      ))}
+                    </select>
+                    <label
+                      htmlFor="reason"
+                      className="absolute text-xs text-grey-400 top-[-8px] left-8 px-6 bg-white"
+                    >
+                      How We Can Help You?
+                    </label>
+                    <FaChevronDown className="absolute top-5 right-4 pointer-events-none" />
+                  </div>
+                  <button
+                    className="bg-black hover:bg-white text-white border hover:text-black py-2 px-12 rounded text-center text-2xl float-right transition-colors"
+                    type="submit"
                   >
-                    {options.map((option, i) => (
-                      <option value={option.value} key={i}>
-                        {option.name}
-                      </option>
-                    ))}
-                  </select>
-                  <label
-                    for="reason"
-                    className="absolute text-xs text-grey-400 top-[-8px] left-8 px-6 bg-white"
-                  >
-                    How We Can Help You?
-                  </label>
-                  <FaChevronDown className="absolute top-5 right-4 pointer-events-none" />
+                    Submit
+                  </button>
+                </form>
+              :
+                <div className="p-4 mb-4 text-sm text-green rounded-lg bg-company-black" role="alert">
+                  <span className="font-medium">Great!</span> The form has been successfully sent!
                 </div>
-                <button
-                  className="bg-black hover:bg-white text-white border hover:text-black py-2 px-12 rounded text-center text-2xl float-right transition-colors"
-                  type="submit"
-                >
-                  Submit
-                </button>
-              </form>
+              }
             </div>
             <div className="flex-1 basis-2/5">
               <div className="mb-6">

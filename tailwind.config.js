@@ -13,7 +13,9 @@ module.exports = {
       'black': '#000000',
       'white': '#FFFFFF',
       'grey-400': '#d1d5db',
-      'blue': '#0B92F1'
+      'blue': '#0B92F1',
+      'red': '#FF0000',
+      'green': '#30c48d'
     },
     container: {
       center: true,
